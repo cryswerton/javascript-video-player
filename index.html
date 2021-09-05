@@ -19,6 +19,7 @@
             height: 20px;
             width: 640px;
             background-color: #CCC;
+            display: block;
         }
 
         #progress-bar-container {
@@ -28,13 +29,21 @@
         }
 
         #progress-bar,
-        #max-progress-bar {
+        #max-progress-bar,
+        #invisible-progress-bar {
         position: absolute;
         top: 0;
         left: 0;
         }
         #progress-bar{
         z-index: 10;
+        }
+
+        #invisible-progress-bar{
+            z-index: 15;
+            width: 640px;
+            height: 20px;
+            background-color: transparent;
         }
     </style>
     <script>
@@ -43,6 +52,7 @@
             const vd = document.querySelector('video')
             const progressBar = document.querySelector('#progress-bar')
             const maxProgressBar = document.querySelector('#max-progress-bar')
+            const invisibleProgressBar = document.querySelector('#invisible-progress-bar')
 
             vd.addEventListener('click', () => {
                 vd.paused ? vd.play() : vd.pause()
@@ -58,7 +68,7 @@
                     let progressBarSize = taxaAtual * progressBarMaxSize / 100
                     progressBar.style.width = `${progressBarSize}px`
 
-                    maxProgressBar.addEventListener('mousedown', function(e) {
+                    invisibleProgressBar.addEventListener('mousedown', function(e) {
                         // Get the target
                         const target = e.target;
 
@@ -88,9 +98,11 @@
             <source src="videos/video.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
+        <!---->
         <div id="progress-bar-container">
             <div id="progress-bar"></div>
             <div id="max-progress-bar"></div>
+            <div id="invisible-progress-bar"></div>
         </div>
      </div>
 </body>
