@@ -11,10 +11,14 @@
             margin: 0px;
         }
         #progress-bar{
-            margin: 0px;
             height: 15px;
             width: 0px;
             background-color: red; 
+        }
+        #max-progress-bar{
+            height: 15px;
+            width: 640px;
+            background-color: #CCC;
         }
     </style>
     <script>
@@ -22,6 +26,7 @@
             console.log('test')
             const vd = document.querySelector('video')
             const progressBar = document.querySelector('#progress-bar')
+            const maxProgressBar = document.querySelector('#max-progress-bar')
 
             vd.addEventListener('click', () => {
                 vd.paused ? vd.play() : vd.pause()
@@ -37,8 +42,25 @@
                     let progressBarSize = taxaAtual * progressBarMaxSize / 100
                     progressBar.style.width = `${progressBarSize}px`
                     console.log(vd.currentTime)
+
+                    maxProgressBar.addEventListener('mousedown', function(e) {
+                        // Get the target
+                        const target = e.target;
+
+                        // Get the bounding rectangle of target
+                        const rect = target.getBoundingClientRect();
+
+                        // Mouse position
+                        const x = e.clientX - rect.left;
+                        console.log(x)
+                        taxaAtual = 100 * x / videoLength
+                        vd.currentTime = taxaAtual * videoLength / 100
+
+                    });
+
                     }, 1000);
                 }
+
         })
     </script>
 </head>
@@ -53,6 +75,7 @@
             Your browser does not support the video tag.
         </video>
         <div id="progress-bar"></div>
+        <div id="max-progress-bar"></div>
      </div>
 </body>
 </html>
