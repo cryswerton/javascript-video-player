@@ -41,7 +41,6 @@
                     let taxaAtual = 100 * parseFloat(vd.currentTime) / parseFloat(videoLength)
                     let progressBarSize = taxaAtual * progressBarMaxSize / 100
                     progressBar.style.width = `${progressBarSize}px`
-                    console.log(vd.currentTime)
 
                     maxProgressBar.addEventListener('mousedown', function(e) {
                         // Get the target
@@ -52,13 +51,12 @@
 
                         // Mouse position
                         const x = e.clientX - rect.left;
-                        console.log(x)
-                        taxaAtual = 100 * x / videoLength
+                        taxaAtual = 100 * x / progressBarMaxSize
                         vd.currentTime = taxaAtual * videoLength / 100
 
                     });
 
-                    }, 1000);
+                    }, 500);
                 }
 
         })
