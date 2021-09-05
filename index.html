@@ -11,14 +11,30 @@
             margin: 0px;
         }
         #progress-bar{
-            height: 15px;
+            height: 20px;
             width: 0px;
             background-color: red; 
         }
         #max-progress-bar{
-            height: 15px;
+            height: 20px;
             width: 640px;
             background-color: #CCC;
+        }
+
+        #progress-bar-container {
+        width: 100px;
+        height: 100px;
+        position: relative;
+        }
+
+        #progress-bar,
+        #max-progress-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        }
+        #progress-bar{
+        z-index: 10;
         }
     </style>
     <script>
@@ -56,7 +72,7 @@
 
                     });
 
-                    }, 500);
+                    }, 300);
                 }
 
         })
@@ -72,8 +88,10 @@
             <source src="videos/video.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-        <div id="progress-bar"></div>
-        <div id="max-progress-bar"></div>
+        <div id="progress-bar-container">
+            <div id="progress-bar"></div>
+            <div id="max-progress-bar"></div>
+        </div>
      </div>
 </body>
 </html>
