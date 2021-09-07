@@ -10,11 +10,35 @@ document.addEventListener('DOMContentLoaded', () => {
         vd.paused ? vd.play() : vd.pause()
     })
 
+    function getVideoDurationFormatted(videoTime, type){
+        let time = videoTime 
+        let minutes = Math.floor(time / 60);
+        let seconds = Math.floor(time - minutes * 60)
+        if(type === 'd'){
+            return `/${minutes}:${seconds}`
+        }else{
+            return `${minutes}:${seconds}`
+        }
+    }
+
+    function renderVideoDuration(time){
+        document.querySelector('#video-duration').textContent = ''
+        document.querySelector('#video-duration').textContent = getVideoDurationFormatted(time, 'd')
+    }
+
+    function renderVideoCurrentTime(time){
+        document.querySelector('#video-current-time').textContent = ''
+        document.querySelector('#video-current-time').textContent = getVideoDurationFormatted(time)
+    }
+
 
     vd.onloadedmetadata = function(){
         const videoLength = vd.duration
         let progressBarMaxSize = invisibleProgressBar.offsetWidth
         console.log('metadata loaded')
+
+        renderVideoDuration(vd.duration)
+
         pbc.style.top = `${vd.offsetHeight}px`
         window.onresize = function(){
             pbc.style.top = `${vd.offsetHeight}px`
@@ -25,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let taxaAtual = 100 * parseFloat(vd.currentTime) / parseFloat(videoLength)
             let progressBarSize = taxaAtual * progressBarMaxSize / 100
             progressBar.style.width = `${progressBarSize}px`
+            renderVideoCurrentTime(vd.currentTime)
             
         }, 500);
 
