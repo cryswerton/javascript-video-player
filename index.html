@@ -5,94 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
     <title>PHP Video Player</title>
-    <style>
-
-        #video-container{
-            padding: 0.05px;
-        }
-
-        video{
-            margin: 0px;
-        }
-        #progress-bar{
-            height: 20px;
-            width: 0px;
-            background-color: red; 
-        }
-        #max-progress-bar{
-            height: 20px;
-            width: 640px;
-            background-color: #CCC;
-            display: block;
-        }
-
-        #progress-bar-container {
-        width: 100px;
-        height: 100px;
-        position: relative;
-        }
-
-        #progress-bar,
-        #max-progress-bar,
-        #invisible-progress-bar {
-        position: absolute;
-        top: 0;
-        left: 0;
-        }
-        #progress-bar{
-        z-index: 10;
-        }
-
-        #invisible-progress-bar{
-            z-index: 15;
-            width: 640px;
-            height: 20px;
-            background-color: transparent;
-        }
-    </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('test')
-            const vd = document.querySelector('video')
-            const progressBar = document.querySelector('#progress-bar')
-            const maxProgressBar = document.querySelector('#max-progress-bar')
-            const invisibleProgressBar = document.querySelector('#invisible-progress-bar')
-
-            vd.addEventListener('click', () => {
-                vd.paused ? vd.play() : vd.pause()
-            })
-
-
-            vd.onloadedmetadata = function(){
-                const videoLength = vd.duration
-                const progressBarMaxSize = 640;
-                console.log('metadata loaded')
-                setInterval(function(){ 
-                    let taxaAtual = 100 * parseFloat(vd.currentTime) / parseFloat(videoLength)
-                    let progressBarSize = taxaAtual * progressBarMaxSize / 100
-                    progressBar.style.width = `${progressBarSize}px`
-                    
-                }, 500);
-
-                    invisibleProgressBar.addEventListener('mousedown', function(e) {
-                        // Get the target
-                        const target = e.target;
-                        
-                        // Get the bounding rectangle of target
-                        const rect = target.getBoundingClientRect();
-
-                        // Mouse position
-                        const x = e.clientX - rect.left;
-                        taxaAtual = 100 * x / progressBarMaxSize
-                        vd.currentTime = taxaAtual * videoLength / 100
-
-                    }); 
-
-                }
-
-        })
-    </script>
 </head>
 <body class="container">
     <header class="my-4">
@@ -112,4 +26,5 @@
         </div>
      </div>
 </body>
+<script src="script.js"></script>
 </html>

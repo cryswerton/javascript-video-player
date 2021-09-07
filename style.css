@@ -1,0 +1,35 @@
+#progress-bar{
+    height: 20px;
+    width: 0px;
+    background-color: red; 
+}
+#max-progress-bar{
+    height: 20px;
+    width: 640px;
+    background-color: #CCC;
+    display: block;
+}
+
+#progress-bar-container {
+width: 100px;
+height: 100px;
+position: relative;
+}
+
+#progress-bar,
+#max-progress-bar,
+#invisible-progress-bar {
+position: absolute;
+top: 0;
+left: 0;
+}
+#progress-bar{
+z-index: 10;
+}
+
+#invisible-progress-bar{
+    z-index: 15;
+    width: 640px;
+    height: 20px;
+    background-color: transparent;
+}
