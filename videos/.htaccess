@@ -1,9 +1,5 @@
-<Files ~ "^.*">
-  Deny from all
-</Files>
-
-<Files ~ "^index\.html|css|js|.*\.png|.*\.mkv|.*\.mp4">
-  Allow from all
-</Files>
-
+RewriteEngine On
+RewriteCond %{REQUEST_URI} \.(mp4|mp3|avi)$ [NC]
+RewriteCond %{HTTP_REFERER} !^http://*/.*$ [NC]
+RewriteRule ^.* - [F,L]
 
