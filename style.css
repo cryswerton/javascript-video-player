@@ -1,19 +1,27 @@
+#video-container{
+    width: 100%;
+}
+
+video{
+    width: 100%;
+}
+
 #progress-bar{
     height: 20px;
-    width: 0px;
+    width: 100%;
     background-color: red; 
 }
 #max-progress-bar{
     height: 20px;
-    width: 640px;
+    width: 100%;
     background-color: #CCC;
     display: block;
 }
 
 #progress-bar-container {
-width: 100px;
-height: 100px;
-position: relative;
+    width: 100%;    
+    height: 100px;
+    position: relative;
 }
 
 #progress-bar,
@@ -29,7 +37,11 @@ z-index: 10;
 
 #invisible-progress-bar{
     z-index: 15;
-    width: 640px;
+    width: 100%;
     height: 20px;
     background-color: transparent;
+}
+
+@media (max-width: 575.98px) { 
+
 }

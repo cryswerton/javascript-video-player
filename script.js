@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     vd.onloadedmetadata = function(){
         const videoLength = vd.duration
-        const progressBarMaxSize = 640;
+        const progressBarMaxSize = invisibleProgressBar.offsetWidth;
         console.log('metadata loaded')
         setInterval(function(){ 
             let taxaAtual = 100 * parseFloat(vd.currentTime) / parseFloat(videoLength)
