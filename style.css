@@ -1,5 +1,16 @@
+#content{
+    position: relative;
+}
+
 #video-container{
     width: 100%;
+    height: fit-content;
+}
+
+#progress-bar-container {
+    width: 100%;    
+    height: fit-content;
+    position: absolute;
 }
 
 video{
@@ -16,12 +27,6 @@ video{
     width: 100%;
     background-color: #CCC;
     display: block;
-}
-
-#progress-bar-container {
-    width: 100%;    
-    height: 100px;
-    position: relative;
 }
 
 #progress-bar,

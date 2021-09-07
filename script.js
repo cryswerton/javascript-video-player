@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('test')
     const vd = document.querySelector('video')
+    const pbc = document.querySelector('#progress-bar-container')
     const progressBar = document.querySelector('#progress-bar')
     const maxProgressBar = document.querySelector('#max-progress-bar')
     const invisibleProgressBar = document.querySelector('#invisible-progress-bar')
@@ -11,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     vd.onloadedmetadata = function(){
+        pbc.style.top = `${vd.offsetHeight}px`
         const videoLength = vd.duration
         const progressBarMaxSize = invisibleProgressBar.offsetWidth;
         console.log('metadata loaded')
