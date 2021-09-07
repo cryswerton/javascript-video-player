@@ -12,10 +12,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     vd.onloadedmetadata = function(){
-        pbc.style.top = `${vd.offsetHeight}px`
         const videoLength = vd.duration
         const progressBarMaxSize = invisibleProgressBar.offsetWidth;
         console.log('metadata loaded')
+        pbc.style.top = `${vd.offsetHeight}px`
+        window.onresize = function(){
+            pbc.style.top = `${vd.offsetHeight}px`
+        }
+
         setInterval(function(){ 
             let taxaAtual = 100 * parseFloat(vd.currentTime) / parseFloat(videoLength)
             let progressBarSize = taxaAtual * progressBarMaxSize / 100
