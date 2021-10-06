@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         vd.paused ? vd.play() : vd.pause()
     })
 
-// Esse é um comentário para um teste, ignore!!!
+// Esse é um comentário para um teste, ignore!!!!
     function getVideoDurationFormatted(videoTime, type){
         let time = videoTime 
         let minutes = Math.floor(time / 60);
